@@ -47,5 +47,5 @@ conky.config = {
 }
 
 conky.text = [[
-${execpi 60 python3 /home/niklas/.claude/conky-claude-usage.py}
+${execpi 60 python3 $HOME/.claude/conky-claude-usage.py}
 ]]
