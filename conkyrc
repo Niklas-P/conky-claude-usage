@@ -1,0 +1,51 @@
+-- Claude Code Usage Widget
+-- Shows 5-hour and 7-day utilization from the Anthropic OAuth usage API.
+-- Colors shift green → yellow → orange → red as usage climbs.
+-- Data is fetched at most once per 5 minutes (cached in /tmp).
+
+conky.config = {
+    -- update Conky every 60s; the script itself caches API calls for 5min
+    update_interval = 60,
+    cpu_avg_samples = 1,
+
+    -- transparent floating window
+    own_window           = true,
+    own_window_type      = 'normal',
+    own_window_transparent = false,
+    own_window_argb_visual = true,
+    own_window_argb_value  = 180,        -- semi-transparent dark bg
+    own_window_colour      = '111111',
+    own_window_hints       = 'undecorated,sticky,skip_taskbar,skip_pager,below',
+
+    -- position: bottom-right, adjust gap_x/gap_y to taste
+    alignment    = 'bottom_right',
+    gap_x        = 20,
+    gap_y        = 20,
+
+    minimum_width  = 260,
+    minimum_height = 0,
+    maximum_width  = 300,
+
+    -- borders / padding
+    border_inner_margin = 10,
+    border_outer_margin = 0,
+    draw_borders   = false,
+    draw_shades    = false,
+    draw_outline   = false,
+
+    -- font — Ubuntu Mono renders █ and ░ cleanly
+    use_xft  = true,
+    font     = 'Ubuntu Mono:size=10',
+    xftalpha = 1.0,
+    override_utf8_locale = true,
+
+    double_buffer = true,
+    no_buffers    = true,
+    uppercase     = false,
+
+    default_color = 'AAAAAA',
+}
+
+conky.text = [[
+${execpi 60 python3 /home/niklas/.claude/conky-claude-usage.py}
+]]
