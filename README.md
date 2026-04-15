@@ -2,7 +2,7 @@
 
 A lightweight [Conky](https://github.com/brndnmtthws/conky) desktop widget that shows your **Claude Code usage** in real time — 5-hour session window and 7-day weekly window — with color-coded progress bars and countdown timers to the next reset.
 
-![Widget preview](.github/preview.png)
+![Widget preview](.preview.png)
 
 ---
 
